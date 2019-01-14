@@ -1,0 +1,8 @@
+flask
+flask-script
+flask-sqlalchemy
+flask-debugtoolbar
+pymysql
+uwsgi
+pandas
+requests

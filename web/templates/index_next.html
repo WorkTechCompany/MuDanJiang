@@ -1,0 +1,400 @@
+{% extends 'common/layout_main.html' %}
+
+{% block content %}
+    <div class="wrap">
+        <div class="dtindex1">
+            <img src="{{ buildStaticUrl('images/dati1.png') }}">
+        </div>
+        <div class="dtindex2">
+            <img src="{{ buildStaticUrl('images/dati2.png') }}">
+        </div>
+        <div class="dtindex3">
+            网上主题团课
+        </div>
+        <div class="dtindex4">
+            {{ profession.p_name }}
+        </div>
+        <div class="dthead">
+            {{ info.d_name }}
+        </div>
+        <div class="dtxx">
+            <ul>
+                <div id='form'>
+                    <li>
+                        <input id="f0" type='hidden' name='f0' value="{{ info.did }}"/>
+                        <select id="f1" name='f1'>
+
+                            <volist name='f1' id='vo'>
+                                {% for item in list %}
+                                    <option value="{{ item.did }}">
+                                        {{ item.d_name }}
+                                    </option>
+                                {% endfor %}
+                            </volist>
+                        </select>
+                    </li>
+                    <li>
+                        <select id='f2' name='f2' style="display:none">
+                            <option value='0'>
+                                -请选择-
+                            </option>
+                        </select>
+                    </li>
+                    <li>
+                        <select id='f3' name='f3' style="display:none">
+                            <option value='0'>
+                                -请选择-
+                            </option>
+                        </select>
+                    </li>
+                    <li>
+                        <select id='f4' name='f4' style="display:none">
+                            <option value='0'>
+                                -请选择-
+                            </option>
+                        </select>
+                    </li>
+                    <li id='buts'>
+
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script>
+        window.onload = function () {
+            f1({{ info.did }});
+        };
+
+        function sub() {
+            fid = $("#f1").val();
+            f0 = $("#f0").val();
+            ff2 = $("#f2").val();
+            ff3 = $("#f3").val();
+            ff4 = $("#f4").val();
+            if (fid == 0) {
+                alert('请在第一项中选择');
+                return false;
+            }
+            if (f4 != 0) {
+                if (f3 == 0) {
+                    alert('请选择上级单位');
+                    return false;
+                }
+            }
+            if (f3 != 0) {
+                if (f2 == 0) {
+                    alert('请选择上级单位');
+                    return false;
+                }
+            }
+            openId = $("#openId").val();
+            window.location.href = common_ops.buildUrl("/form_name?id=" + fid + "&f2=" + ff2 + "&f3=" + ff3 + "&f4=" + ff4 + "&f0=" + f0 + "&openId="+openId)
+        }
+
+        $("#f1").on("change", function () {
+            $("#buts").html('');
+            fid = $("#f1").val();
+            $.ajax({
+                type: 'GET',
+                url: common_ops.buildUrl("/f1?id=" + fid),
+
+                dataType: 'json',
+                success: function (data) {
+                    var result = '';
+                    //alert(data)
+                    if (data.length == 0) {
+                        $('#f2').hide();
+                        $('#f3').hide();
+                        $('#f4').hide();
+                        reslt = '';
+                        $('#f2').html(reslt);
+                        $('#f3').html(reslt);
+                        $('#f4').html(reslt);
+                        $("#buts").html('<input type="button"  onclick="sub()" value="下一步"> ');
+                        return false;
+                    } else {
+                        var arrLen = data.length;
+                    }
+
+                    if (arrLen > 0) {
+                        for (var i = 0; i < arrLen; i++) {
+                            result += '<option value="' + data[i].did + '">' + data[i].d_name + '</option>'
+                        }
+                        f3(data[0].did);
+                        $('#f2').html(result);
+                        $('#f2').show();
+                        // 如果没有数据
+                        $("#buts").html('<input type="button"  onclick="sub()" value="下一步"> ')
+                    }
+
+
+                },
+                error: function (xhr, type) {
+
+
+                }
+            });
+        });
+
+        function f1(id) {
+            fid = id;
+            $.ajax({
+                type: 'GET',
+                url: common_ops.buildUrl("/f1?id=" + fid),
+
+                dataType: 'json',
+                success: function (data) {
+                    var result = '';
+                    //alert(data)
+                    if (data.length == 0) {
+                        $('#f2').hide();
+                        $('#f3').hide();
+                        $('#f4').hide();
+                        reslt = '';
+                        $('#f2').html(reslt);
+                        $('#f3').html(reslt);
+                        $('#f4').html(reslt);
+                        $("#buts").html('<input type="button"  onclick="sub()" value="下一步"> ');
+                        return false;
+                    } else {
+                        var arrLen = data.length;
+                    }
+
+                    if (arrLen > 0) {
+                        for (var i = 0; i < arrLen; i++) {
+                            result += '<option value="' + data[i].did + '">' + data[i].d_name + '</option>'
+                        }
+                        f2(data[0].did);
+                        $('#f1').html(result);
+                        $('#f1').show();
+                        $("#buts").html('<input type="button"  onclick="sub()" value="下一步"> ');
+                        // 如果没有数据
+                    } else {
+                        $("#buts").html('<input type="button"  onclick="sub()" value="下一步">');
+                        $('#f1').hide();
+                        //  result += '<option value="0">默认</option>'
+                    }
+                },
+                error: function (xhr, type) {
+
+
+                }
+            });
+        }
+
+        function f2(id) {
+            fid = id;
+            $.ajax({
+                type: 'GET',
+                url: common_ops.buildUrl("/f1?id=" + fid),
+
+                dataType: 'json',
+                success: function (data) {
+                    var result = '';
+                    if (data.length == 0) {
+
+                        $('#f3').hide();
+                        $('#f2').hide();
+                        $('#f4').hide();
+                        reslt = '';
+
+                        $('#f3').html(reslt);
+                        $('#f2').html(reslt);
+                        $('#f4').html(reslt);
+                        $("#buts").html('<input type="button"  onclick="sub()" value="下一步"> ')
+                        return false;
+                    } else {
+                        var arrLen = data.length;
+                    }
+
+                    if (arrLen > 0) {
+                        for (var i = 0; i < arrLen; i++) {
+                            result += '<option value="' + data[i].did + '">' + data[i].d_name + '</option>'
+                        }
+                        f3(data[0].did);
+                        $('#f2').html(result);
+                        $('#f2').show();
+                        $("#buts").html('<input type="button"  onclick="sub()" value="下一步"> ')
+                        // 如果没有数据
+                    }
+
+
+                },
+                error: function (xhr, type) {
+
+
+                }
+            });
+        }
+
+        $("#f2").on("change", function () {
+            $("#buts").html('');
+            fid = $("#f2").val();
+            $.ajax({
+                type: 'GET',
+                url: common_ops.buildUrl("/f1?id=" + fid),
+                dataType: 'json',
+                success: function (data) {
+                    var result = '';
+                    if (data.length == 0) {
+                        $("#buts").html('<input type="button"  onclick="sub()" value="下一步"> ')
+                        $('#f3').hide();
+                        $('#f4').hide();
+                        reslt = '';
+
+                        $('#f3').html(reslt);
+                        $('#f4').html(reslt);
+                        return false;
+                    } else {
+                        var arrLen = data.length;
+                    }
+                    if (arrLen > 0) {
+                        for (var i = 0; i < arrLen; i++) {
+                            result += '<option value="' + data[i].did + '">' + data[i].d_name + '</option>'
+                        }
+                        f4(data[0].did);
+                        // 如果没有数据
+                        $('#f3').html(result);
+                        $('#f3').show();
+                        $("#buts").html('<input type="button"  onclick="sub()" value="下一步"> ')
+                    }
+                },
+                error: function (xhr, type) {
+
+
+                }
+            });
+        });
+
+        function f3(id) {
+            fid = id;
+            $.ajax({
+                type: 'GET',
+                url: common_ops.buildUrl("/f1?id=" + fid),
+
+                dataType: 'json',
+                success: function (data) {
+
+
+                    var result = '';
+                    if (data.length == 0) {
+
+                        $("#buts").html('<input type="button"  onclick="sub()" value="下一步"> ')
+                        $('#f4').hide();
+                        reslt = '';
+
+
+                        $('#f4').html(reslt);
+                        return false;
+                    } else {
+                        var arrLen = data.length;
+                    }
+                    if (arrLen > 0) {
+                        for (var i = 0; i < arrLen; i++) {
+                            result += '<option value="' + data[i].did + '">' + data[i].d_name + '</option>'
+
+
+                        }
+                        f4(data[0].did);
+                        // 如果没有数据
+                        $('#f3').html(result);
+                        $('#f3').show();
+                        $("#buts").html('<input type="button"  onclick="sub()" value="下一步"> ')
+                    } else {
+
+                        result += '<option value="0">默认</option>'
+                    }
+
+
+                },
+                error: function (xhr, type) {
+
+
+                }
+            });
+        }
+
+        $("#f3").on("change", function () {
+            $("#buts").html('');
+            fid = $("#f3").val();
+            $.ajax({
+                type: 'GET',
+                url: common_ops.buildUrl("/f1?id=" + fid),
+                dataType: 'json',
+                success: function (data) {
+                    var result = '';
+                    if (data.length == 0) {
+
+                        $("#buts").html('<input type="button"  onclick="sub()" value="下一步"> ')
+                        $('#f4').hide();
+                        reslt = '';
+
+
+                        $('#f4').html(reslt);
+                        return false;
+                    } else {
+                        var arrLen = data.length;
+                    }
+                    if (arrLen > 0) {
+                        for (var i = 0; i < arrLen; i++) {
+                            result += '<option value="' + data[i].did + '">' + data[i].d_name + '</option>'
+                        }
+
+                        $('#f4').html(result);
+                        $('#f4').show();
+                        $("#buts").html('<input type="button"  onclick="sub()" value="下一步"> ')
+                        // 如果没有数据
+                    } else {
+                        result += '<option value="0">默认</option>'
+                        $('#f4').hide();
+                    }
+                    $('#f4').html(result);
+
+                },
+                error: function (xhr, type) {
+
+
+                }
+            });
+        });
+
+        function f4(id) {
+            fid = id;
+            $.ajax({
+                type: 'GET',
+                url: common_ops.buildUrl("/f1?id=" + fid),
+                dataType: 'json',
+                success: function (data) {
+                    var result = '';
+                    if (data.length == 0) {
+                        $("#buts").html('<input type="button"  onclick="sub()" value="下一步"> ')
+                        $('#f4').hide();
+                        reslt = '';
+                        $('#f4').html(reslt);
+                        return false;
+                    } else {
+                        var arrLen = data.length;
+                    }
+                    if (arrLen > 0) {
+                        for (var i = 0; i < arrLen; i++) {
+                            result += '<option value="' + data[i].did + '">' + data[i].d_name + '</option>'
+                        }
+                        // 如果没有数据
+                        $('#f4').html(result);
+                        $('#f4').show();
+                        $("#buts").html('<input type="button"  onclick="sub()" value="下一步"> ')
+                    }
+
+
+                },
+                error: function (xhr, type) {
+
+
+                }
+            });
+        }
+    </script>
+{% endblock %}

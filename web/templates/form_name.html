@@ -1,0 +1,59 @@
+{% extends 'common/layout_main.html' %}
+
+{% block content %}
+    <div class="wrap">
+        <div class="dtindex1">
+            <img src="{{ buildStaticUrl('images/dati1.png') }}">
+        </div>
+        <div class="dtindex2">
+            <img src="{{ buildStaticUrl('images/dati2.png') }}">
+        </div>
+        <div class="dtindex3">
+            网上主题团课
+        </div>
+        <div class="dtindex4">
+            {{ profession.p_name }}
+        </div>
+        <div class="dthead">
+            {{ info.d_name }}
+        </div>
+        <div class="dtxx">
+
+            <form action="{{ buildUrl('/form_name') }}" method="post" id='form'>
+                <ul>
+                    <li>
+                        <p>您的姓名</p><input name="x_name" id="title" type="text" style="width: 4rem;" value="{{ name }}">
+
+                    </li>
+                    <input type='hidden' name='f1' value="{{ data.id }}"/>
+                    <input type='hidden' name='f2' value="{{ data.f2 }}"/>
+                    <input type='hidden' name='f0' value="{{ data.f0 }}"/>
+                    <input type='hidden' name='f3' value="{{ data.f3 }}"/>
+                    <input type='hidden' name='f4' value="{{ data.f4 }}"/>
+                    <input type='hidden' id="openIds" name='openIds'/>
+
+                    <li>
+                        <input type="button" onclick="sub('{{ profession.url }}')" value="下一步">
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script>
+        function sub(redirUrl) {
+            fid = $("#title").val();
+            if (fid == '') {
+                alert('请输入您的姓名');
+                return false;
+            }
+            $("#openIds").val($("#openId").val());
+            window.location.href=redirUrl;
+            $("#form").submit();
+
+
+        }
+    </script>
+{% endblock %}

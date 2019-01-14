@@ -1,0 +1,255 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td
+{margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;}
+html{font-size: 13.34vw;height: 100%}
+@font-face
+{
+    font-family: myFirstFont;
+    src: url('syhtSC-Regular.eot'),
+    url('syhtSC-Regular.otf'),
+    url('syhtSC-Regular.ttf')
+    url('syhtSC-Regular.woff'); /* IE9+ */
+}
+ul{margin: 0;padding: 0;list-style-type: none}
+a{text-decoration: none;border:none;-webkit-tap-highlight-color: rgba(0,0,0,0);-webkit-tap-highlight-color:transparent;outline:none;}
+body{font-family: myFirstFont!important;font-size: 0.24rem;height: 100%;background: url("../images/datibg.jpg") no-repeat bottom center;background-size: 100% auto;height: 100%}
+@media (min-width:641px){body{width:640px;margin:auto;}}
+input[type=button], input[type=submit], input[type=file], button { cursor: pointer; -webkit-appearance: none; font-family: myFirstFont}
+input{-moz-box-sizing: border-box;box-sizing: border-box;outline: none;}
+select{font-family: myFirstFont}
+.dtindex1{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+.dtindex1 img{
+    display: block;
+    width: 1.9rem;
+    height: 1.9rem;
+    margin: 0 auto;
+    margin-top: 0.84rem;
+}
+.dtindex2{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+.dtindex2 img{
+    display: block;
+    width: 6.1rem;
+    margin: 0.28rem auto;
+    overflow: hidden;
+}
+.dtindex3{
+    display: block;
+    width: 4.75rem;
+    height: 0.62rem;
+    font-size: 0.28rem;
+    color: #e60000;
+    line-height: 0.56rem;
+    margin: 0.14rem auto 0;
+    text-align: center;
+    background: url("../images/dati3.png") no-repeat center;
+    background-size: 100% 100%;
+}
+.dtindex4{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    line-height: 0.55rem;
+    color: #fff;
+    font-size: 0.26rem;
+}
+.dtindex5{
+    display: block;
+    width: 7.1rem;
+    margin: 0.26rem auto 0;
+    overflow: hidden;
+}
+.dtindex5 ul{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+.dtindex5 li{
+    display: block;
+    width: 33.3%;
+    float: left;
+    overflow: hidden;
+}
+.dtindex5 li a{
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0 auto;
+    background: url("../images/dati4.png") no-repeat center;
+    background-size: 100% 100%;
+}
+.dtindex5 table{
+    display: table;
+    width: 100%;
+    height: 1.5rem;
+}
+.dtindex5 td{
+    width: 100%;
+    height: 1.5rem;
+    text-align: center;
+    font-size: 0.28rem;
+    color: #7d0017;
+}
+.dtindex6{
+    display: block;
+    width: 7.1rem;
+    margin: 0.58rem auto 0;
+    overflow: hidden;
+}
+.dtindex6 ul{
+    display: block;
+    width: 7.5rem;
+    overflow: hidden;
+}
+.dtindex6 li{
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.36rem;
+    float: left;
+    overflow: hidden;
+}
+.dtindex6 li a{
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0 auto;
+    background: url("../images/dati4.png") no-repeat center;
+    background-size: 100% 100%;
+}
+.dtindex6 table{
+    display: table;
+    width: 100%;
+    height: 1.5rem;
+}
+.dtindex6 td{
+    width: 100%;
+    height: 1.5rem;
+    text-align: center;
+    font-size: 0.28rem;
+    color: #7d0017;
+}
+.dthead{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    line-height: 0.6rem;
+    font-size: 0.36rem;
+    color: #ffd451;
+}
+.dtxx{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+.dtxx ul{
+    display: table;
+    width: 100%;
+    overflow: hidden;
+}
+.dtxx li{
+    display: block;
+    width: 100%;
+    margin-top: 0.33rem;
+    overflow: hidden;
+}
+.dtxx li select{
+    display: block;
+    width: 5.8rem;
+    height: 0.7rem;
+    overflow: hidden;
+    margin: 0 auto;
+    border-radius: 0.7rem;
+    border: none;
+    color: #999;
+    font-size: 0.28rem;
+    text-indent: 0.4rem;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: #fff;
+    background: #fff url("../images/datisanjiao.png") no-repeat 5.28rem center;
+    background-size: 0.2rem 0.1rem;
+    outline: none;
+}
+.dtxx li input{
+    display: block;
+    width: 5.8rem;
+    height: 0.7rem;
+    overflow: hidden;
+    margin: 0 auto;
+    border-radius: 0.7rem;
+    border: none;
+    font-size: 0.32rem;
+    color: #dd0000;
+    background: #ffca28;
+    outline: none;
+}
+.dtewm{
+    display: block;
+    width: 100%;
+    margin: 0.6rem auto 0;
+    overflow: hidden;
+}
+.dtewm img{
+    display: block;
+    width: 2.9rem;
+    height: 2.9rem;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.dtewmwz{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    font-size: 0.26rem;
+    color: #fff;
+    line-height: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,112 @@
+{% extends 'common/layout_main.html' %}
+
+{% block content %}
+<div class="wrap">
+    <div class="dtindex1">
+        <img src="{{buildStaticUrl('images/dati1.png')}}">
+    </div>
+    <div class="dtindex2">
+        <img src="{{buildStaticUrl('images/dati2.png')}}">
+    </div>
+    <div class="dtindex3">
+        网上主题团课
+    </div>
+    <div class="dtindex4">
+        {{ info.p_name }}
+    </div>
+    <div class="dtindex5">
+        <ul>
+
+            <li>
+                <a href="{{buildUrl('/next?id=1&openId='+ openId)}}">
+                    <table>
+                        <tr>
+                            <td>
+                                团省委
+                            </td>
+                        </tr>
+                    </table>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{buildUrl('/next?id=2&openId='+ openId)}}">
+                    <table>
+                        <tr>
+                            <td>
+                                省直<br>团委
+                            </td>
+                        </tr>
+                    </table>
+                </a>
+            </li>
+            <li>
+                <a href="{{buildUrl('/next?id=3&openId='+ openId)}}">
+                    <table>
+                        <tr>
+                            <td>
+                                省直高<br>校团委
+                            </td>
+                        </tr>
+                    </table>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="dtindex6">
+        <ul>
+            <li>
+                <a href="{{buildUrl('/next?id=4&openId='+ openId)}}">
+                    <table>
+                        <tr>
+                            <td>
+                                省管企<br>业团委
+                            </td>
+                        </tr>
+                    </table>
+                </a>
+            </li>
+            <li>
+                <a href="{{buildUrl('/next?id=5&openId='+ openId)}}">
+                    <table>
+                        <tr>
+                            <td>
+                                市地<br>团委
+                            </td>
+                        </tr>
+                    </table>
+                </a>
+            </li>
+            <li>
+                <a href="{{buildUrl('/next?id=6&openId='+ openId)}}">
+                    <table>
+                        <tr>
+                            <td>
+                                民办高<br>校团委
+                            </td>
+                        </tr>
+                    </table>
+                </a>
+            </li>
+            <li>
+                <a href="{{buildUrl('/form_name?id=7&openId='+ openId)}}">
+                    <table>
+                        <tr>
+                            <td>
+                                其他
+                            </td>
+                        </tr>
+                    </table>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+    <script>
+
+    </script>
+{% endblock %}

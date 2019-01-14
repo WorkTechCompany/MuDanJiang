@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>后台管理系统</title>
+    <!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 11]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <meta name="author" content="CodedThemes" />
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="{{ buildStaticUrl('images/favicon.ico') }}" type="image/x-icon">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="{{ buildStaticUrl('fonts/fontawesome/css/fontawesome-all.min.css') }}">
+    <!-- animation css -->
+    <link rel="stylesheet" href="{{ buildStaticUrl('plugins/animation/css/animate.min.css') }}">
+    <!-- notification css -->
+    <link rel="stylesheet" href="{{ buildStaticUrl('plugins/notification/css/notification.min.css') }}">
+    <!-- vendor css -->
+    <link rel="stylesheet" href="{{ buildStaticUrl('css/sts.css') }}">
+
+    {% block css %}
+    {% endblock %}
+
+</head>
+
+<body>
+    <!-- [ Pre-loader ] start -->
+    <!-- [ Pre-loader ] End -->
+
+    <!-- [ navigation menu ] start -->
+    {% block pcoded %}
+
+    {% endblock %}
+    <!-- [ navigation menu ] end -->
+
+    <!-- [ Header ] start -->
+    <header class="navbar pcoded-header navbar-expand-lg navbar-light">
+        <div class="m-header">
+            <a class="mobile-menu" id="mobile-collapse1" href="javascript:"><span></span></a>
+            <a href="index.html" class="b-brand">
+               <div class="b-bg">
+                   <i class="feather icon-trending-up"></i>
+               </div>
+               <span class="b-title">后台管理</span>
+           </a>
+        </div>
+        <a class="mobile-menu" id="mobile-header" href="javascript:">
+            <i class="feather icon-more-horizontal"></i>
+        </a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li><a href="javascript:" class="full-screen" onclick="javascript:toggleFullScreen()"><i class="feather icon-maximize"></i></a></li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li>
+                    <div class="dropdown drp-user">
+                                <a href="{{ buildUrl('/logout') }}" class="dud-logout" title="Logout">
+                                    <i class="feather icon-log-out"></i>
+                                </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <!-- [ Header ] end -->
+
+    <!-- [ Main Content ] start -->
+    {% block content %}
+    {% endblock %}
+    <!-- [ Main Content ] end -->
+
+    <!-- Warning Section start -->
+
+    <!-- Required Js -->
+    <script src="{{  buildStaticUrl('js/vendor-all.min.js') }}"></script>
+    <script src="{{ buildStaticUrl('js/pcoded.min.js') }}"> </script>
+
+    <!-- notification Js -->
+    <script src="{{ buildStaticUrl('plugins/notification/js/bootstrap-growl.min.js') }}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="{{ buildStaticUrl('js/common.js') }}"></script>
+    {% block  js %}
+
+    {% endblock %}
+</body>
+
+</html>

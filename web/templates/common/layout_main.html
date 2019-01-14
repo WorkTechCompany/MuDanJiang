@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>我正在参加黑龙江省“青年大学习”</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="{{ buildStaticUrl('css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+<input type="hidden" id="openId" name="openId" value="{{ openId }}">
+{% block content %}
+
+{% endblock %}
+<div id='wx_pic' style='margin:0 auto;display:none;'>
+    <!--<img src="{$imgUrl}" />-->
+    </div>
+</div>
+</body>
+</html>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="{{ buildStaticUrl('js/common.js') }}"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    {% block js %}
+    {% endblock %}
+<script>
+    // 微信配置
+ wx.config({
+     debug: false,
+     appId: "wx6950865320663956",
+     timestamp: '{{ share.timestamp }}',
+     nonceStr: '{{ share.noncestr }}',
+     signature: '{{ share.signature }}',
+     jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'] // 功能列表，我们要使用JS-SDK的什么功能
+ });
+ wx.ready(function(){
+     var imgURL = 'http://api.vaststrong.com/static/images/dati1.png';
+     var link = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx6950865320663956&redirect_uri=http://api.vaststrong.com&response_type=code&scope=snsapi_userinfo&state=STATE';
+     var desc = '学习新思想，争做新青年';
+     var title = '我正在参加黑龙江省“青年大学习”，你也快来参加吧！';
+
+     // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+     wx.onMenuShareTimeline({
+         title: title, // 分享标题
+         link: link,
+         imgUrl: imgURL // 分享图标
+     });
+     // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
+     wx.onMenuShareAppMessage({
+         title: title, // 分享标题
+         desc: desc, // 分享描述
+         link: link,
+         imgUrl: imgURL, // 分享图标
+         type: 'link', // 分享类型,music、video或link，不填默认为link
+     });
+
+ });
+</script>

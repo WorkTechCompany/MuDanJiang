@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Datta Able - Signin</title>
+    <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 10]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <meta name="author" content="CodedThemes"/>
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="{{ buildStaticUrl('fonts/fontawesome/css/fontawesome-all.min.css') }}">
+    <!-- animation css -->
+    <link rel="stylesheet" href="{{ buildStaticUrl('plugins/animation/css/animate.min.css') }}">
+    <!-- vendor css -->
+    <link rel="stylesheet" href="{{ buildStaticUrl('css/sts.css') }}">
+
+</head>
+
+<body>
+<div class="auth-wrapper">
+    <div class="auth-content">
+        <div class="auth-bg">
+            <span class="r"></span>
+            <span class="r s"></span>
+            <span class="r s"></span>
+            <span class="r"></span>
+        </div>
+        <div class="card">
+            <div class="card-body text-center">
+                <div class="mb-4">
+                    <i class="feather icon-unlock auth-icon"></i>
+                </div>
+                <h3 class="mb-4">登录</h3>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="text" name="login_name">
+                </div>
+                <div class="input-group mb-4">
+                    <input type="password" class="form-control" placeholder="password" name="login_pwd">
+                </div>
+                <button class="btn btn-primary shadow-2 mb-4" onclick="loginBtn()">登录</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Required Js -->
+<script src="{{ buildStaticUrl('js/jquery.js') }}"></script>
+<script src="{{ buildStaticUrl('js/vendor-all.min.js') }}"></script>
+<script src="{{ buildStaticUrl('js/pcoded.min.js') }}"></script>
+<script src="{{ buildStaticUrl('js/common.js') }}"></script>
+<script>
+    function loginBtn() {
+        var login_name = $(".input-group input[name=login_name]").val();
+        var login_pwd = $(".input-group input[name=login_pwd]").val();
+        $.ajax({
+            url: common_ops.buildUrl("/admin/login"),
+            type: 'POST',
+            data: {'name': login_name, 'pwd': login_pwd},
+            dataType: 'json',
+            success: function (res) {
+                alert(res.msg);
+                if (res.code == 200) {
+                    window.localStorage.setItem('id', res.id);
+                    window.location.href = common_ops.buildUrl("/admin/index");
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>
