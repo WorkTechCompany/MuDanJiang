@@ -12,8 +12,12 @@ class data(db.Model):
     f0 = db.Column(Integer, nullable=False, server_default=FetchedValue())
     f1 = db.Column(Integer, nullable=False, server_default=FetchedValue())
     f2 = db.Column(Integer, nullable=False, server_default=FetchedValue())
-    time = db.Column(DateTime, nullable=False, server_default=FetchedValue())
+    image = db.Column(String(100), nullable=False, server_default=FetchedValue())
     content = db.Column(String(5000), nullable=False, server_default=FetchedValue())
+    time = db.Column(DateTime, nullable=False, server_default=FetchedValue())
+    content_image = db.Column(String(100), nullable=False, server_default=FetchedValue())
+    content_url = db.Column(String(100), nullable=False, server_default=FetchedValue())
+    Introduction = db.Column(String(100), nullable=False, server_default=FetchedValue())
 
 
     @property
