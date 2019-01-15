@@ -13,6 +13,7 @@ class data(db.Model):
     f1 = db.Column(Integer, nullable=False, server_default=FetchedValue())
     f2 = db.Column(Integer, nullable=False, server_default=FetchedValue())
     image = db.Column(String(100), nullable=False, server_default=FetchedValue())
+    url = db.Column(String(100), nullable=False, server_default=FetchedValue())
     content = db.Column(String(5000), nullable=False, server_default=FetchedValue())
     time = db.Column(String(100), nullable=False, server_default=FetchedValue())
     content_image = db.Column(String(100), nullable=False, server_default=FetchedValue())
