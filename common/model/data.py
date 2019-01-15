@@ -18,6 +18,7 @@ class data(db.Model):
     content_image = db.Column(String(100), nullable=False, server_default=FetchedValue())
     content_url = db.Column(String(100), nullable=False, server_default=FetchedValue())
     Introduction = db.Column(String(100), nullable=False, server_default=FetchedValue())
+    content_title = db.Column(String(100), nullable=False, server_default=FetchedValue())
 
 
     @property
