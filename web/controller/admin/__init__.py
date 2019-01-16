@@ -1,11 +1,17 @@
 from flask import Blueprint, request, jsonify
 from common.libs.WebHelper import ops_render
 from common.model.admin import Admin
+from web.controller.admin.utils import create_folder
 
 route_admin = Blueprint('admin_page', __name__)
 from web.controller.admin.index import *
 from web.controller.admin.manager import *
 from web.controller.admin.profession import *
+
+# app.config['UPLOAD_FOLDER'] = "Images"
+#
+# create_folder(app.config['UPLOAD_FOLDER'])
+
 
 @route_admin.route('/', methods=['GET', 'POST'])
 @route_admin.route('/login', methods=['GET', 'POST'])
