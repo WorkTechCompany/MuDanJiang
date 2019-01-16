@@ -7,7 +7,6 @@ from web.controller.admin.index import *
 from web.controller.admin.manager import *
 from web.controller.admin.profession import *
 
-
 @route_admin.route('/', methods=['GET', 'POST'])
 @route_admin.route('/login', methods=['GET', 'POST'])
 def admin():
