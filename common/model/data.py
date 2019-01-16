@@ -17,7 +17,7 @@ class data(db.Model):
     content = db.Column(String(5000), nullable=False, server_default=FetchedValue())
     time = db.Column(String(100), nullable=False, server_default=FetchedValue())
     content_url = db.Column(String(100), nullable=False, server_default=FetchedValue())
-    Introduction = db.Column(String(100), nullable=False, server_default=FetchedValue())
+    Introduction = db.Column(String(1000), nullable=False, server_default=FetchedValue())
     content_title = db.Column(String(100), nullable=False, server_default=FetchedValue())
 
 
@@ -41,18 +41,3 @@ class data(db.Model):
             return de.name
         else:
             return '/'
-
-
-
-
-
-# CREATE TABLE `data` (
-#   `id` int(11) NOT NULL AUTO_INCREMENT,
-#   `title` varchar(255) NOT NULL,
-#   `f1` int(11) NOT NULL,
-#   `f2` int(11) NOT NULL,
-#   `f3` int(11) NOT NULL,
-#   `time` datetime NOT NULL,
-#   PRIMARY KEY (`id`) USING BTREE,
-#   UNIQUE KEY `id` (`id`) USING BTREE
-# ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
