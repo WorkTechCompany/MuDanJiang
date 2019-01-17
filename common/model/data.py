@@ -1,4 +1,4 @@
-from sqlalchemy import Column, DateTime, Integer, String
+from sqlalchemy import Integer, String
 from sqlalchemy.schema import FetchedValue
 from application import db
 from common.model.classify import classify
@@ -14,7 +14,7 @@ class data(db.Model):
     f2 = db.Column(Integer, nullable=False, server_default=FetchedValue())
     image = db.Column(String(100), nullable=False, server_default=FetchedValue())
     url = db.Column(String(100), nullable=False, server_default=FetchedValue())
-    content = db.Column(String(5000), nullable=False, server_default=FetchedValue())
+    content = db.Column(String(100000), nullable=False, server_default=FetchedValue())
     time = db.Column(String(100), nullable=False, server_default=FetchedValue())
     content_url = db.Column(String(100), nullable=False, server_default=FetchedValue())
     Introduction = db.Column(String(1000), nullable=False, server_default=FetchedValue())
