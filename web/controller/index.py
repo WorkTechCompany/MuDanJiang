@@ -15,19 +15,7 @@ wechat = WeChatService()
 @route_index.route('/')
 @route_index.route('/index')
 def index():
-    resp = {}
-    req = request.values
-    code = req['code'] if 'code' in req else ''
-    state = req['state'] if 'state' in req else ''
-    resp['info'] = Profession.query.order_by(Profession.pid.desc()).first()
-
-    url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid={0}&secret={1}&code={2}&grant_type=authorization_code'.format(
-        'wx6950865320663956', '336da1d2a1f11447b057311f24655413', code)
-    r = requests.get(url)
-    value = json.loads(r.text)
-    resp['openId'] = value['openid'] if 'openid' in value else ''
-    resp['share'] = wechat.getShareData()
-    return ops_render('index.html', resp)
+    return ops_render('/admin/index.html')
 
 
 @route_index.route('/next')
