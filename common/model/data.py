@@ -19,6 +19,8 @@ class data(db.Model):
     content_url = db.Column(String(100), nullable=False, server_default=FetchedValue())
     Introduction = db.Column(String(1000), nullable=False, server_default=FetchedValue())
     content_title = db.Column(String(100), nullable=False, server_default=FetchedValue())
+    type = db.Column(Integer, nullable=False, server_default=FetchedValue())
+
 
 
     @property
