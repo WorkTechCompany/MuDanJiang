@@ -7,6 +7,7 @@ route_admin = Blueprint('admin_page', __name__)
 from web.controller.admin.index import *
 from web.controller.admin.manager import *
 from web.controller.admin.profession import *
+from web.controller.admin.message import *
 
 # app.config['UPLOAD_FOLDER'] = "Images"
 #
