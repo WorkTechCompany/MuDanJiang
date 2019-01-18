@@ -16,9 +16,9 @@ def controlmsg():
     type = req['type'] if 'type' in req else -1
     offset = int(int(page) - 1) * 100
 
-    query = message.query.filter_by()
+    query = message.query
 
-    if type != '-1':
+    if int(type) != -1:
         query = message.query.filter_by(type=type)
 
     totalCount = query.count()
