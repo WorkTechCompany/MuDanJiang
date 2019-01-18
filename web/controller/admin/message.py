@@ -15,9 +15,10 @@ def controlmsg():
     page = req['page'] if 'page' in req else 1
     type = req['type'] if 'type' in req else -1
     offset = int(int(page) - 1) * 100
-    query = message.query
 
-    if type != -1:
+    query = message.query.filter_by()
+
+    if type != '-1':
         query = message.query.filter_by(type=type)
 
     totalCount = query.count()
@@ -27,6 +28,7 @@ def controlmsg():
     resp['list'] = list
     resp['pageTotal'] = (totalCount // 100) + 1
     resp['curPage'] = page
+    resp['type'] = type
 
     return ops_render('/admin/message.html', resp)
 
