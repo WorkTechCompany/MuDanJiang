@@ -25,7 +25,7 @@ def controlmsg():
 
     resp['totalCount'] = totalCount
     resp['list'] = list
-    resp['pageTotal'] = (totalCount // 100)
+    resp['pageTotal'] = (totalCount // 100) + 1
     resp['curPage'] = page
 
     return ops_render('/admin/message.html', resp)
