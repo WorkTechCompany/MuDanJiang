@@ -10,6 +10,4 @@ class message(db.Model):
     category = db.Column(String(100), nullable=False, server_default=FetchedValue())
     mail = db.Column(String(100), nullable=False, server_default=FetchedValue())
     phone = db.Column(String(11), nullable=False, server_default=FetchedValue())
-    qq = db.Column(String(20), nullable=False, server_default=FetchedValue())
-    title = db.Column(String(50), nullable=False, server_default=FetchedValue())
     content = db.Column(String(5000), nullable=False, server_default=FetchedValue())
