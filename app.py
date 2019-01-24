@@ -9,7 +9,7 @@ manager.add_command("runserver",
 
 
 def main():
-    manager.run()
+    app.run()
 
 @app.errorhandler(502)
 def page_502(er):
