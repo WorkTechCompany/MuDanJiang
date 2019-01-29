@@ -1,0 +1,132 @@
+{% extends 'common/layout_mainn.html' %}
+{% block css %}
+    <link rel="stylesheet" href="{{ buildStaticUrl('css/myPagination.css') }}">
+    <link rel="stylesheet" href="{{ buildStaticUrl('plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ buildStaticUrl('plugins/multi-select/css/multi-select.css') }}">
+{% endblock %}
+{% block pcoded %}
+    <nav class="pcoded-navbar">
+        <div class="navbar-wrapper">
+            <div class="navbar-brand header-logo">
+                <a class="b-brand">
+                    <span class="b-title">后台管理系统</span>
+                </a>
+                <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
+            </div>
+            <div class="navbar-content scroll-div">
+                <ul class="nav pcoded-inner-navbar">
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>管理员</label>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
+                        class="nav-item pcoded-hasmenu active pcoded-trigger">
+                        <a href="javascript:" class="nav-link"><span class="pcoded-micon"><i
+                                class="feather icon-home"></i></span><span class="pcoded-mtext">管理员操作</span></a>
+                        <ul class="pcoded-submenu">
+                            <li class="sjtj"><a href="{{ buildUrl('/admin/count') }}" class="">数据统计</a></li>
+                            <li class="sjgl"><a href="{{ buildUrl('/admin/index') }}" class="">数据管理</a></li>
+                            <li class="xgyzj"><a href="{{ buildUrl('/admin/profession') }}" class="">修改与增加</a></li>
+                            <li class="active yhlb"><a href="{{ buildUrl('/admin/userinfo') }}" class="">用户列表</a></li>
+                            <li class="lygl"><a href="{{ buildUrl('/admin/controlmsg') }}" class="">留言管理</a></li>
+                            <li class="glyzj"><a href="{{ buildUrl('/admin/manager?id=1') }}" class="">管理员增加</a></li>
+                            <li class="glyxx"><a href="{{ buildUrl('/admin/conrtol') }}" class="">管理员信息</a></li>
+                            <li class="mmxg"><a href="{{ buildUrl('/admin/changepwd') }}" class="">管理员密码修改</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+{% block content %}
+    <div class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+                    <!-- [ breadcrumb ] start -->
+                    <div class="page-header">
+                        <div class="page-block">
+                            <div class="row align-items-center">
+                                <div class="col-md-12">
+                                    <div class="page-header-title">
+                                        <h5 class="m-b-10">管理员</h5>
+                                    </div>
+                                    <ul class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="javascript:"><i
+                                                class="feather icon-home"></i></a></li>
+                                        <li class="breadcrumb-item"><a href="javascript:">数据统计</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-body">
+                        <div class="page-wrapper">
+                            <div class="col-xl-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>用户列表</h5>
+                                    </div>
+                                    <div class="card-block table-border-style">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>用户名</th>
+                                                    <th>邮箱地址</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for item in list %}
+                                                    <tr>
+                                                        <th scope="row">{{ item.id }}</th>
+                                                        <td>{{ item.username }}</td>
+                                                        <td>{{ item.mail}}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                                <input type='hidden' value="{{ type }}" id="type"/>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div id="pagination" class="pagination"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{{ buildStaticUrl('js/myPagination.js') }}"></script>
+    <script src="{{ buildStaticUrl('plugins/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ buildStaticUrl('plugins/multi-select/js/jquery.quicksearch.js') }}"></script>
+    <script src="{{ buildStaticUrl('plugins/multi-select/js/jquery.multi-select.js') }}"></script>
+    <script src="{{ buildStaticUrl('js/pages/form-select-custom.js') }}"></script>
+    <script>
+        window.onload = function () {
+
+            myPagination = new myPagination({
+
+                id: 'pagination',
+                curPage: {{ curPage }}, //初始页码
+                pageTotal: {{ pageTotal }}, //总页数
+                pageAmount: 100,  //每页多少条
+                dataTotal: {{ totalCount }}, //总共多少条数据
+                pageSize: 100, //可选,分页个数
+                showPageTotalFlag: true, //是否显示数据统计
+                showSkipInputFlag: false, //是否支持跳转
+                getPage: function (page) {
+
+                    //获取当前页数
+                    console.log(page);
+
+                    window.location.href = common_ops.buildUrl("/admin/userinfo?page=" + page);
+                }
+            });
+        }</script>
+{% endblock %}

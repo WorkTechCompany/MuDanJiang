@@ -72,8 +72,9 @@
             success: function (res) {
                 alert(res.msg);
                 if (res.code == 200) {
-                    window.localStorage.setItem('id', res.id);
-                    window.location.href = common_ops.buildUrl("/admin/index");
+                    sessionStorage.setItem('power', res.power);
+                    sessionStorage.setItem('username', res.username);
+                    window.location.href = common_ops.buildUrl("/admin/count");
                 }
             }
         });

@@ -1,0 +1,163 @@
+{% extends 'common/layout_mainn.html' %}
+{% block css %}
+    <link rel="stylesheet" href="{{ buildStaticUrl('css/myPagination.css') }}">
+    <link rel="stylesheet" href="{{ buildStaticUrl('plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ buildStaticUrl('plugins/multi-select/css/multi-select.css') }}">
+{% endblock %}
+{% block pcoded %}
+    <nav class="pcoded-navbar">
+        <div class="navbar-wrapper">
+            <div class="navbar-brand header-logo">
+                <a class="b-brand">
+                    <span class="b-title">后台管理系统</span>
+                </a>
+                <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
+            </div>
+            <div class="navbar-content scroll-div">
+                <ul class="nav pcoded-inner-navbar">
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>管理员</label>
+                    </li>
+                    <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project"
+                        class="nav-item pcoded-hasmenu active pcoded-trigger">
+                        <a href="javascript:" class="nav-link"><span class="pcoded-micon"><i
+                                class="feather icon-home"></i></span><span class="pcoded-mtext">管理员操作</span></a>
+                        <ul class="pcoded-submenu">
+                            <li class="active sjtj"><a href="{{ buildUrl('/admin/count') }}" class="">数据统计</a></li>
+                            <li class="sjgl"><a href="{{ buildUrl('/admin/index') }}" class="">数据管理</a></li>
+                            <li class="xgyzj"><a href="{{ buildUrl('/admin/profession') }}" class="">修改与增加</a></li>
+                            <li class="yhlb"><a href="{{ buildUrl('/admin/userinfo') }}" class="">用户列表</a></li>
+                            <li class="lygl"><a href="{{ buildUrl('/admin/controlmsg') }}" class="">留言管理</a></li>
+                            <li class="glyzj"><a href="{{ buildUrl('/admin/manager?id=1') }}" class="">管理员增加</a></li>
+                            <li class="glyxx"><a href="{{ buildUrl('/admin/conrtol') }}" class="">管理员信息</a></li>
+                            <li class="mmxg"><a href="{{ buildUrl('/admin/changepwd') }}" class="">管理员密码修改</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+{% block content %}
+    <div class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+                    <!-- [ breadcrumb ] start -->
+                    <div class="page-header">
+                        <div class="page-block">
+                            <div class="row align-items-center">
+                                <div class="col-md-12">
+                                    <div class="page-header-title">
+                                        <h5 class="m-b-10">管理员</h5>
+                                    </div>
+                                    <ul class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="javascript:"><i
+                                                class="feather icon-home"></i></a></li>
+                                        <li class="breadcrumb-item"><a href="javascript:">数据统计</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-body">
+                        <div class="page-wrapper">
+                            <div class="col-xl-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>数据统计</h5>
+                                    </div>
+                                <div class="col-md-6 col-xl-4">
+                                    <div class="card">
+                                        <div class="card-block">
+                                            <h6 class="mb-4">用户总计</h6>
+                                            <div class="row d-flex align-items-center">
+                                                <div class="col-9">
+                                                    <h3 class="f-w-300 d-flex align-items-center m-b-0">{{ usercount }}</h3>
+                                                </div>
+                                            </div>
+                                            <div class="progress m-t-30" style="height: 7px;">
+                                                <div class="progress-bar progress-c-theme" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xl-4">
+                                    <div class="card">
+                                        <div class="card-block">
+                                            <h6 class="mb-4">文章总计</h6>
+                                            <div class="row d-flex align-items-center">
+                                                <div class="col-9">
+                                                    <h3 class="f-w-300 d-flex align-items-center  m-b-0">{{ datacount }}</h3>
+                                                </div>
+                                            </div>
+                                            <div class="progress m-t-30" style="height: 7px;">
+                                                <div class="progress-bar progress-c-theme2" role="progressbar" style="width: 35%;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{{ buildStaticUrl('js/myPagination.js') }}"></script>
+    <script src="{{ buildStaticUrl('plugins/select2/js/select2.full.min.js') }}"></script>
+    <script src="{{ buildStaticUrl('plugins/multi-select/js/jquery.quicksearch.js') }}"></script>
+    <script src="{{ buildStaticUrl('plugins/multi-select/js/jquery.multi-select.js') }}"></script>
+    <script src="{{ buildStaticUrl('js/pages/form-select-custom.js') }}"></script>
+    <script src="{{ buildStaticUrl('js/echarts.simple.min.js') }}"></script>
+
+    <script>
+    console.log($)
+     switch(sessionStorage.getItem('power')){
+            case '文化活动': $('.yhlb').hide()
+                            $('.lygl').hide()
+                            $('.glyzj').hide()
+                            $('.glyxx').hide()
+                break;
+            case '文化服务': $('.yhlb').hide()
+                            $('.lygl').hide()
+                            $('.glyzj').hide()
+                            $('.glyxx').hide()
+                break;
+            case '文化产业': $('.yhlb').hide()
+                            $('.lygl').hide()
+                            $('.glyzj').hide()
+                            $('.glyxx').hide()
+                break;
+            case '广播影视': $('.yhlb').hide()
+                            $('.lygl').hide()
+                            $('.glyzj').hide()
+                            $('.glyxx').hide()
+                break;
+            case '新闻出版': $('.yhlb').hide()
+                            $('.lygl').hide()
+                            $('.glyzj').hide()
+                            $('.glyxx').hide()
+                break;
+            case '文化市场': $('.yhlb').hide()
+                            $('.lygl').hide()
+                            $('.glyzj').hide()
+                            $('.glyxx').hide()
+                break;
+            case '历史文化': $('.yhlb').hide()
+                            $('.lygl').hide()
+                            $('.glyzj').hide()
+                            $('.glyxx').hide()
+                break;
+            case '文化名人': $('.yhlb').hide()
+                            $('.lygl').hide()
+                            $('.glyzj').hide()
+                            $('.glyxx').hide()
+                break;
+        }
+    </script>
+{% endblock %}
