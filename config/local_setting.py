@@ -1,8 +1,10 @@
 APP = {
-    'domain': 'http://132.232.133.48:8889'
+    'domain': 'http://218.10.148.67:8080'
 }
 
 UPLOAD = {
+
+
     'ext': ['jpg', 'gif', 'bmp', 'jpeg', 'png'],
     'prefix_path': '/web/static/upload/',
     'prefix_url': '/static/upload/'
